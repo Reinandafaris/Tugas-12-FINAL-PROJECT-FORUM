@@ -36,7 +36,8 @@
                                     Kategori: <span class="font-medium">{{ $question->category->name }}</span>
                                 </div>
                                 <div class="mt-2 text-gray-700">
-                                    {{ Str::limit($question->content, 150) }}
+                                    {!! Str::limit($question->content, 150) !!}
+                                    {{-- {{ Str::limit($question->content, 150) }} --}}
                                 </div>
                                 @canany(['update', 'delete'], $question)
                                     <div class="mt-3 text-right">
