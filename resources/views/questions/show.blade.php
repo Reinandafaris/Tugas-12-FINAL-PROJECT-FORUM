@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="prose max-w-none text-gray-800">
-                        {!! nl2br(e($question->content)) !!}
+                        {!! Str::limit($question->content, 150) !!}
                     </div>
 
                     @if ($question->image)
@@ -127,6 +127,12 @@
                             <textarea name="content" id="content_answer" rows="5"
                                 class="block mt-1 w-full rounded-md shadow-sm border-gray-300 tinymce-editor"
                                 placeholder="Tulis jawaban Anda di sini..." required>{{ old('content') }}</textarea>
+
+                            {{-- TAMBAHKAN INI --}}
+                            @error('content')
+                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                            {{-- BATAS TAMBAHAN --}}
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
@@ -144,7 +150,7 @@
 
     <script>
         tinymce.init({
-            selector: '#content_answer',
+            selector: '#content',
             plugins: 'lists link image table code',
             toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | table | code',
             height: 350

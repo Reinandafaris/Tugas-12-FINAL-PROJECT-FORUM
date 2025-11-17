@@ -1,6 +1,3 @@
-<script src="https://cdn.tiny.cloud/1/hntkvjmwql6cm7ylsjn1nft5s0118rxyzvfm9rg7zaorfzn3/tinymce/8/tinymce.min.js"
-    referrerpolicy="origin" crossorigin="anonymous"></script>
-
 <div class="mt-6">
     <h3 class="text-xl font-semibold text-gray-800 mb-4">
         {{ $question->answers->count() }} Jawaban
@@ -30,7 +27,7 @@
                                 @endcan
                                 @can('delete', $answer)
                                     <form action="{{ route('answers.destroy', $answer) }}" method="POST"
-                                        class="inline ml-2 tinymce-editor"
+                                        class="inline ml-2 form-hapus"
                                         onsubmit="return confirm('Anda yakin ingin menghapus jawaban ini?');">
                                         @csrf
                                         @method('DELETE')
@@ -55,12 +52,3 @@
         @endforelse
     </div>
 </div>
-
-<script>
-    tinymce.init({
-        selector: '#content',
-        plugins: 'lists link image table code',
-        toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright | bullist numlist | link image | table | code',
-        height: 350
-    });
-</script>
